@@ -4,14 +4,23 @@ GlamZone is a modern, responsive fashion e-commerce website built with HTML, CSS
 📁 Project Structure
 text
 glamzone/
+
 ├── index.html          # Homepage with featured products and sections
+
 ├── about.html          # About Us page with company information
+
 ├── car.html           # Main shopping page with product categories
+
 ├── contact.html       # Contact page with form and location
+
 ├── favorites.html     # User favorites/wishlist page
+
 ├── login.html         # Login and signup page
+
 └── README.md          # This file
+
 🛍️ Features
+
 Core Functionality
 Responsive Design: Works seamlessly on desktop, tablet, and mobile devices
 
