@@ -124,12 +124,6 @@ Tablet: 768px - 1199px
 
 Mobile: 320px - 767px
 
-🔐 Default Login Credentials
-For testing purposes:
-
-Username: sri
-
-Password: 1234567
 
 🌟 Future Enhancements
 Potential improvements for the project:
