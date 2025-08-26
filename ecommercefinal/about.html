@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | GlamZone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* --- Navbar Styles --- */
+    #navbar {
+      width: 100%;
+      height: 10vh;
+      background-color: #264653;
+      color: #FFFFFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    #logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.5px;
+      padding-left: 8px;
+    }
+
+    #nav-links {
+      padding-right: 20px;
+    }
+
+    #nav-links a {
+      color: #FFFFFF;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    #nav-links a:hover {
+      color: #E9C46A;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #3D6B7A;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(10, 10, 10, 0.2);
+      z-index: 1;
+      border-radius: 4px;
+      top: 100%;
+      left: 0;
+      margin-top: 5px;
+    }
+
+    .dropdown-content a {
+      color: #FFFFFF;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+      white-space: nowrap;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #d1bb82;
+      color: #264653;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* --- Hero Section --- */
+    .about-hero {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+    }
+
+    .about-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      filter: brightness(0.7);
+      transform: scale(1.1);
+      transition: transform 0.2s ease;
+    }
+
+    .about-hero.parallax img {
+      transform: translateY(0);
+    }
+
+    /* --- About Content --- */
+    .about-content {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-out 0.2s both;
+    }
+
+    .about-content h2 {
+      font-size: 32px;
+      font-weight: 600;
+      color: #264653;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .about-content strong {
+      color: #000;
+    }
+
+    /* --- Team Section --- */
+    .team-section {
+      padding: 60px 20px;
+      background-color: #f8f8f8;
+      text-align: center;
+    }
+
+    .team-section h2 {
+      font-size: 32px;
+      color: #264653;
+      margin-bottom: 40px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team-member {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .team-member h3 {
+      font-size: 1.3rem;
+      color: #264653;
+      margin-bottom: 10px;
+    }
+
+    .team-member p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .team-member .bio {
+      display: none;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    .team-member.active .bio {
+      display: block;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    /* --- Stats Section --- */
+    .stats-section {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    .stats-section h2 {
+      font-size: 32px;
+      color: #264653;
+      margin-bottom: 40px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      padding: 20px;
+      animation: fadeIn 1s ease-out 0.4s both;
+    }
+
+    .stat-item h3 {
+      font-size: 2.5rem;
+      color: #E9C46A;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .stat-item p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* --- CTA Section --- */
+    .cta-section {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #264653;
+      color: #FFFFFF;
+    }
+
+    .cta-section h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btn {
+      padding: 14px 30px;
+      background-color: #E9C46A;
+      color: #264653;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .cta-btn:hover {
+      background-color: #F4A261;
+      transform: translateY(-2px);
+    }
+
+    /* --- Footer Styles --- */
+    #footer {
+      background-color: #264653;
+      color: #FFFFFF;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links a {
+      color: #E9C46A;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
+
+    /* --- Animations --- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Responsive Styles --- */
+    @media (max-width: 768px) {
+      #navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 20px;
+      }
+
+      #logo {
+        margin-bottom: 10px;
+      }
+
+      #nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-right: 0;
+      }
+
+      #nav-links a {
+        margin: 5px 10px;
+      }
+
+      .dropdown-content {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .about-hero {
+        height: 40vh;
+      }
+
+      .about-content h2 {
+        font-size: 24px;
+      }
+
+      .about-content p {
+        font-size: 16px;
+      }
+
+      .team-section h2, .stats-section h2, .cta-section h2 {
+        font-size: 24px;
+      }
+
+      .team-member img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .stat-item h3 {
+        font-size: 2rem;
+      }
+
+      .cta-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .team-grid, .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-member {
+        padding: 15px;
+      }
+
+      .stat-item h3 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <div id="logo">GlamZone</div>
+    <div id="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="car.html">SHOP</a>
+      <div class="dropdown">
+        <a href="#">CATEGORY ⌄</a>
+        <div class="dropdown-content">
+          <a href="#">Men</a>
+          <a href="#">Women</a>
+          <a href="#">Kids</a>
+          <a href="#">Accessories</a>
+        </div>
+      </div>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="login.html">LOGIN</a>
+    </div>
+  </nav>
+
+  <section class="about-hero parallax">
+    <img src="https://images-static.nykaa.com/nykdesignstudio-images/pub/media/about-us/desktop-banner.jpg" alt="About GlamZone" />
+  </section>
+
+  <section class="about-content">
+    <h2>About <strong>GlamZone</strong></h2>
+    <p>
+      At <strong>GlamZone</strong>, we believe fashion is more than just fabric — it’s a reflection of your soul. 
+      Founded with a passion to empower individuality and bold self-expression, GlamZone is your one-stop destination 
+      for curated fashion that blends timeless elegance with modern flair. Our handpicked collections are designed to 
+      inspire confidence in every step you take.
+    </p>
+  </section>
+
+  <section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Jane Doe" />
+        <h3>Jane Doe</h3>
+        <p>Creative Director</p>
+        <div class="bio">Jane leads our design team, curating collections that blend style and comfort.</div>
+      </div>
+      <div class="team-member">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="John Smith" />
+        <h3>John Smith</h3>
+        <p>Marketing Lead</p>
+        <div class="bio">John drives our brand’s vision, connecting with fashion lovers worldwide.</div>
+      </div>
+      <div class="team-member">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Emily Brown" />
+        <h3>Emily Brown</h3>
+        <p>Customer Experience</p>
+        <div class="bio">Emily ensures every customer feels valued with top-notch support.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <h2>Our Impact</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h3 data-target="10">0</h3>
+        <p>Years in Business</p>
+      </div>
+      <div class="stat-item">
+        <h3 data-target="100000">0</h3>
+        <p>Happy Customers</p>
+      </div>
+      <div class="stat-item">
+        <h3 data-target="500">0</h3>
+        <p>Unique Designs</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Join Our Fashion Community</h2>
+    <p>Be the first to know about exclusive offers, new arrivals, and style tips.</p>
+    <a href="signup.html" class="cta-btn">Join Now</a>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-content">
+      <p>© 2025 GlamZone. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a> |
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Parallax effect (disabled on mobile for performance)
+    window.addEventListener('scroll', function() {
+      if (window.innerWidth > 768) {
+        const hero = document.querySelector('.about-hero img');
+        const scrollPosition = window.pageYOffset;
+        hero.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+      }
+    });
+
+    // Team member interaction (click for mobile, hover for desktop)
+    const teamMembers = document.querySelectorAll('.team-member');
+    teamMembers.forEach(member => {
+      member.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+          this.classList.toggle('active');
+        }
+      });
+      member.addEventListener('mouseenter', function() {
+        if (window.innerWidth > 768) {
+          this.classList.add('active');
+        }
+      });
+      member.addEventListener('mouseleave', function() {
+        if (window.innerWidth > 768) {
+          this.classList.remove('active');
+        }
+      });
+    });
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stat-item h3');
+    const speed = 200;
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / speed;
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          updateCount();
+          observer.disconnect();
+        }
+      }, { threshold: 0.5 });
+      observer.observe(counter.parentElement);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GlamZone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Basic Reset & Body Styling */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #264653;
+            /* Dark Teal/Blue for general text */
+            background-color: #FFFFFF;
+            /* Clean white for the page background */
+        }
+
+        /* --- Navbar Styles --- */
+        #navbar {
+            width: 100%;
+            height: 10vh;
+            background-color: #264653;
+            /* Dark Teal/Blue */
+            color: #FFFFFF;
+            /* White text for contrast */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            /* Add some padding to the sides */
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            position: sticky;
+            /* Make navbar sticky */
+            top: 0;
+            z-index: 1000;
+            /* Ensure it stays on top */
+        }
+
+        #logo {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            font-size: 28px;
+            /* Slightly larger for prominence */
+            font-weight: 700;
+            /* Bolder */
+            color: #FFFFFF;
+            /* White for logo */
+            letter-spacing: 0.5px;
+            padding-left: 8px;
+        }
+
+        #nav-links {
+            padding-right: 20px;
+        }
+
+        #nav-links a {
+            color: #FFFFFF;
+            /* White for all links */
+            text-decoration: none;
+            margin-left: 25px;
+            /* Increased spacing between links */
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s ease;
+            /* Smooth transition for hover */
+        }
+
+        #nav-links a:hover {
+            color: #E9C46A;
+            /* Muted Gold on hover */
+            text-decoration: none;
+            /* Keep underline off */
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #3D6B7A;
+            /* Slightly lighter Teal/Blue for dropdown */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(10, 10, 10, 0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            /* Position below the link */
+            left: 0;
+            margin-top: 5px;
+            /* Small gap */
+        }
+
+        .dropdown-content a {
+            color: #FFFFFF;
+            /* White text for dropdown items */
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            white-space: nowrap;
+            /* Prevent wrapping */
+        }
+
+        .dropdown-content a:hover {
+            background-color: #d1bb82;
+            /* Muted Gold on hover */
+            color: #264653;
+            /* Dark Teal/Blue text on light hover background */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* --- Banner (Hero Section) Styles --- */
+        #banner {
+            width: 100%;
+            height: 60vh;
+            /* Increased height for impact */
+            background-color: #264653;
+            /* Dark Teal/Blue for banner */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .banner-text {
+            max-width: 800px;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .banner-text h1 {
+            font-size: 3.8rem;
+            /* Larger heading for impact */
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .banner-text p {
+            font-size: 1.3rem;
+            font-family: 'Poppins', sans-serif;
+            /* Consistent font */
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .banner-btn {
+            padding: 14px 30px;
+            background-color: #E9C46A;
+            /* Muted Gold */
+            color: #264653;
+            /* Dark Teal/Blue text for high contrast on gold button */
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .banner-btn:hover {
+            background-color: #F4A261;
+            /* Warm Orange-Gold on hover */
+            transform: translateY(-2px);
+        }
+
+        /* --- General Section Title Style --- */
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            text-align: center;
+            margin: 40px 0 20px;
+            color: #264653;
+            /* Dark Teal/Blue for section titles */
+        }
+
+        /* --- Product Slider Styles --- */
+        .slider-container {
+            padding: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+        .slider-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider {
+            display: flex;
+            gap: 25px;
+            /* Increased gap between cards */
+            padding-bottom: 10px;
+        }
+
+        .card {
+            min-width: 220px;
+            background: #FFFFFF;
+            /* Clean white for cards */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            /* Subtle shadow */
+            text-align: center;
+            padding: 15px;
+            display: inline-block;
+            vertical-align: top;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .card img:hover {
+            transform: scale(1.02);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin: 12px 0 8px;
+            color: #264653;
+            /* Dark Teal/Blue for product titles */
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #E9C46A;
+            /* Muted Gold for prices */
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* --- New Kids Zone Section Styles --- */
+        #kids-and-accessories {
+            padding: 60px 20px 20px;
+            /* Adjusted padding */
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #kids-and-accessories h2 {
+            margin-bottom: 40px;
+        }
+
+        .kids-split-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allows wrapping on smaller screens */
+            justify-content: center;
+            gap: 30px;
+            /* Space between the two halves */
+            max-width: 1200px;
+            margin: 0 auto;
+            /* Center the container */
+            padding: 0 20px;
+        }
+
+        .kids-half {
+            flex: 1;
+            /* Allows halves to grow/shrink */
+            min-width: 300px;
+            /* Minimum width before wrapping */
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .kids-half:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .kids-half h3 {
+            font-size: 1.5rem;
+            color: #264653;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .kids-half .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            /* Responsive grid for images */
+            gap: 15px;
+        }
+
+        .kids-half .image-gallery img {
+            width: 100%;
+            height: 180px;
+            /* Fixed height for consistent look */
+            object-fit: cover;
+            /* Ensures images cover the area */
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .kids-half .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* --- Why Choose Us Section Styles --- */
+        #why-choose-us {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #F8F8F8;
+            /* A very light grey background */
+            margin-top: 50px;
+        }
+
+        #why-choose-us .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        #why-choose-us h2 {
+            margin-bottom: 40px;
+            color: #264653;
+            /* Dark Teal/Blue */
+        }
+
+        .benefits-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            /* Space between benefit items */
+        }
+
+        .benefit-item {
+            flex: 1;
+            min-width: 280px;
+            /* Ensures items don't get too small */
+            max-width: 32%;
+            /* Approx. 3 items per row */
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .benefit-item h3 {
+            font-size: 1.3rem;
+            color: #264653;
+            /* Dark Teal/Blue */
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .benefit-item p {
+            font-size: 1rem;
+            color: #555;
+            /* Slightly lighter text for body */
+            margin: 0;
+        }
+
+        /* --- Footer Styles --- */
+        #footer {
+            background-color: #264653;
+            /* Dark Teal/Blue for footer */
+            color: #FFFFFF;
+            /* White text */
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links a {
+            color: #E9C46A;
+            /* Muted Gold for footer links */
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #FFFFFF;
+            /* White on hover for footer links */
+        }
+
+        /* --- Basic Responsiveness --- */
+        @media (max-width: 768px) {
+            #navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            #logo {
+                margin-bottom: 10px;
+            }
+
+            #nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding-right: 0;
+            }
+
+            #nav-links a {
+                margin: 5px 10px;
+            }
+
+            .dropdown-content {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            #banner {
+                height: 45vh;
+            }
+
+            .banner-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .banner-text p {
+                font-size: 1rem;
+            }
+
+            .banner-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                margin-top: 30px;
+            }
+
+            .slider-container {
+                padding: 10px;
+            }
+
+            .card {
+                min-width: 180px;
+                padding: 10px;
+            }
+
+            .card img {
+                height: 200px;
+            }
+
+            .benefits-grid {
+                flex-direction: column;
+                /* Stack benefits on small screens */
+                align-items: center;
+            }
+
+            .benefit-item {
+                max-width: 90%;
+                /* Allow wider items when stacked */
+            }
+
+            .kids-split-container {
+                flex-direction: column;
+                /* Stack halves on small screens */
+            }
+
+            .kids-half {
+                min-width: unset;
+                /* Remove min-width to allow full width */
+                width: 100%;
+            }
+
+            .kids-half .image-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                /* Adjust grid for smaller screens */
+            }
+        }
+
+        .offers-section {
+            background-color: #fef6f0;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .offer-slideshow {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .offer-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div id="logo">GlamZone</div>
+
+        <div id="nav-links">
+            <a href="projintern.html">HOME</a>
+            <a href="CAR.html">SHOP</a>
+            <div class="dropdown">
+                <a href="#">CATEGORY ⌄</a>
+                <div class="dropdown-content">
+                    <a href="#">Men</a>
+                    <a href="#">Women</a>
+                    <a href="#">Kids</a>
+                    <a href="#">Accessories</a>
+                </div>
+            </div>
+            <a href="about.html">ABOUT</a>
+            <a href="contact.html">CONTACT</a>
+            <a href="login.html">LOGIN</a>
+        </div>
+    </nav>
+
+    <section id="banner">
+        <div class="banner-text">
+            <h1>Style That Defines You</h1>
+            <p>Unleash the fashionista in you with GlamZone</p>
+            <a href="CAR.html" class="banner-btn">Shop Now</a>
+        </div>
+    </section>
+
+    <h2>Trending now! Explore top-selling styles at unbeatable prices.</h2>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="card">
+                <img src="https://freakins.com/cdn/shop/files/8JULY24_17010-Edit_c4160c65-9a66-4b75-883d-a9d3bcaac4b0.jpg?v=1748500565&width=800"
+                    alt="Baggy Jeans" />
+                <h3>Baggy Jeans</h3>
+                <p>₹1,199</p>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQF58t0nuWMZGihWSI8DfS42Sb6TSKGokaBfzn1gqlTgRv-dXLopA666ja6bbpo_y8LMYM10CIEJwuOTlV5UHiUBsc3aLgeSOFV1JjRetNH"
+                    alt="Elegant Black Gown" />
+                <h3>Elegant Black Gown</h3>
+                <p>₹2,499</p>
+            </div>
+            <div class="card">
+                <img src="https://thehouseofrare.com/cdn/shop/products/IMG_0061_2e680144-fd4b-4e4d-99fc-2fa939084076_765x.jpg?v=1743587558"
+                    alt="Formal Plain Blue Shirts" />
+                <h3>Formal Plain Blue Shirts</h3>
+                <p>₹1,199</p>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ8boWvgiZwNndHjJ3dvevfKr3M-N6uEV3R5qHlW5tMRSPddUJykhRSDZtlGJ29qj-_oWwO73ptq7LMl02Tn4_16zRcU5qnxU5uhUIYx6SqaVbRBcrjg2PsiQ"
+                    alt="Casual Maxi Dress" />
+                <h3>Casual Maxi Dress</h3>
+                <p>₹999</p>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRiFKy4MzbSygVRCfv5raAtFkYqpO6GVOIXVmJ5gv_t0ZnQfSN03-A9SmV3y001hyKcBl1zRLfcbK-R6KH9zuAv5e-pEWY_ERuuE9HAlUlHaS0C_KREz6YYig"
+                    alt="Red Party Dress" />
+                <h3>Red Party Dress</h3>
+                <p>₹1,799</p>
+            </div>
+            <div class="card">
+                <img src="https://freakins.com/cdn/shop/files/11aug_31369-Edit.jpg?v=1724136687&width=800"
+                    alt="T-Shirts" />
+                <h3>T-Shirts</h3>
+                <p>₹1,199</p>
+            </div>
+            <div class="card">
+                <img src="https://ethenika.com/cdn/shop/files/9C7C2FF4-C986-4B0C-BBF2-1EA2E58FFE17.jpg?v=1742998491&width=990"
+                    alt="Pastel Kurti Set" />
+                <h3>Pastel Kurti Set</h3>
+                <p>₹1,199</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section id="kids-and-accessories">
+
+        <h2>Our Adorable Kids Zone</h2>
+        <div class="kids-split-container">
+            <div class="kids-half kids-apparel">
+                <h3>Kids Apparel</h3>
+                <div class="image-gallery">
+                    <img src="https://mamaandpeaches.com/cdn/shop/files/14_b2ac817d-f9c9-417c-a684-99d5608ef813.jpg?v=1745223983&width=1100"
+                        alt="Kids Dress" />
+                    <img src="https://mamaandpeaches.com/cdn/shop/files/TropicalFruitsKurtaSet_0621d4d3-212a-4ad8-ac68-3dbe49250eaa.jpg?v=1743155846&width=1100"
+                        alt="Boys Outfit" />
+                    <img src="https://mamaandpeaches.com/cdn/shop/files/crabsmuslinromper.jpg?v=1746530235&width=1100"
+                        alt="Baby Romper" />
+                </div>
+            </div>
+            <div class="kids-half kids-accessories">
+                <h3>Kids Accessories</h3>
+                <div class="image-gallery">
+                    <img src="https://images.meesho.com/images/products/447682471/dchv2_1200.jpg"
+                        alt="Kids Sunglasses" />
+                    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSHtJzpOvUXZ-fX29oLJ53N_eEXsRd5Jkr8cDNLxFqeyLcRlpbVMA_fbsfPRGAPb88Ss4LE60vIk4ffUq3QqMPywTnxyPHi3Djh0YyveILtGRCfGQov_pq7"
+                        alt="Kids Backpack" />
+                    <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRDAVz6wYi6Xf5Eq4eYNqqzifKhihkjVQHqLftrR8_TRH6Swlcu_hyQyJ7vyNXsLRhP0rux-xI48UeWk6I6xAuKc1O-R8sD4Ke2-JS6FrZiCPxkqV0f5UAZow"
+                        alt="Kids Hair Accessories" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="offers" class="offers-section">
+        <h2>Unbeatable Offers Await — Hurry, Limited Time Only!</h2>
+        <P> Explore into GlamZone and get more details about the offers</P>
+        <div class="offer-slideshow">
+            <img class="offer-slide"
+                src="https://www.missprintclothing.com/cdn/shop/products/Twirly_Pink_and_White_Baby_Girl_Jacket_Dress.JPG?v=1549004130"
+                alt="Offer 1">
+            <img class="offer-slide" src="https://i.pinimg.com/564x/b2/a3/1a/b2a31a402be3dc03d96a08816638a7b3.jpg"
+                alt="Offer 2">
+            <img class="offer-slide"
+                src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWVuJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D"
+                alt="Offer 3">
+            <img class="offer-slide"
+                src="https://www.royaleimpero.com/cdn/shop/files/shirts_for_men_e1f0f833-3d79-433b-a719-9d1ed4f5f4a4.jpg?v=1723520375"
+                alt="Offer 4">
+            <img class="offer-slide"
+                src="https://assets.myntassets.com/w_412,q_60,dpr_2,fl_progressive/assets/images/27628440/2024/2/16/d7f94671-cf9b-4616-a8eb-7a25b48a1e0b1708049818319KALINIFloralPrintEmpireDress1.jpg"
+                alt="Offer 4">
+            <img class="offer-slide"
+                src="https://babiesfrock.in/cdn/shop/products/imgonline-com-ua-resize-9u51T1EhlSzHvvRe.jpg?v=1675062223"
+                alt="Offer 6">
+        </div>
+        <script>
+            let slideIndex = 0;
+            const slides = document.getElementsByClassName("offer-slide");
+
+            function showSlides() {
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1; }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 3000); // Change image every 3 seconds
+            }
+
+            window.onload = showSlides;
+        </script>
+
+
+
+
+        <section id="why-choose-us">
+            <div class="container">
+                <h2>Why Choose GlamZone?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <h3>Premium Quality</h3>
+                        <p>We source only the finest materials to ensure lasting comfort and style.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Trendy Designs</h3>
+                        <p>Stay ahead of the fashion curve with our regularly updated collection.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Customer Satisfaction</h3>
+                        <p>Your happiness is our priority, backed by excellent support and easy returns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer id="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 GlamZone. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Terms of Service</a> |
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | GlamZone</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333;
+    }   
+    header {
+      background-color: #264653;
+      padding: 20px 50px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Dropdown styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #3D6B7A;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(10, 10, 10, 0.2);
+      z-index: 1;
+      border-radius: 4px;
+      top: 100%;
+      left: 0;
+      margin-top: 5px;
+    }
+
+    .dropdown-content a {
+      color: #FFFFFF;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      white-space: nowrap;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #d1bb82;
+      color: #264653;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* --- Footer Styles --- */
+    #footer {
+      background-color: #264653;
+      /* Dark Teal/Blue for footer */
+      color: #FFFFFF;
+      /* White text */
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links a {
+      color: #E9C46A;
+      /* Muted Gold for footer links */
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+      /* White on hover for footer links */
+    }
+
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+      #navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 20px;
+      }
+
+      #logo {
+        margin-bottom: 10px;
+      }
+
+      #nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-right: 0;
+      }
+
+      #nav-links a {
+        margin: 5px 10px;
+      }
+
+      .dropdown-content {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .contact-heading {
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+
+    .contact-heading h2 {
+      font-size: 36px;
+      color: #264653;
+      margin-bottom: 10px;
+    }
+
+    .contact-container {
+      max-width: 1000px;
+      margin: 30px auto 60px;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-form h3 {
+      font-size: 24px;
+      color: #264653;
+      margin-bottom: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .contact-form button {
+      background-color: #264653;
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #1b3a47;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .contact-info h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #264653;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="logo">GlamZone</div>
+    <nav id="navbar">
+      <div id="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="car.html">SHOP</a>
+        <div class="dropdown">
+          <a href="#">CATEGORY ⌄</a>
+          <div class="dropdown-content">
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+            <a href="#">Kids</a>
+            <a href="#">Accessories</a>
+          </div>
+        </div>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+        <a href="login.html">LOGIN</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="contact-heading">
+    <h2>Contact Us</h2>
+  </div>
+
+  <section class="contact-container">
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <h3>Contact Details</h3>
+      <p><strong>Email:</strong> support@glamzone.com</p>
+      <p><strong>Phone:</strong> +91 91234 56789</p>
+      <p><strong>Address:</strong><br>Jeppiaar Nagar,<br>SH 49A,<br> Chennai, Tamil Nadu 600119,<br>India</p>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.5411508953753!2d80.22350167454509!3d12.872886117035952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525b8c90befe2b%3A0x170ab8b5b21bb530!2sSathyabama%20University!5e0!3m2!1sen!2sin!4v1748766906017!5m2!1sen!2sin" 
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <footer id="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 GlamZone. All rights reserved.</p>
+            </div>
+  </footer>
+
+</body>
+</html>
